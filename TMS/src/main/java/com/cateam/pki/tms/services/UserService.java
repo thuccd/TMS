@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author ThucCD
@@ -27,17 +28,21 @@ import java.util.Collection;
 public class UserService {
     UsersRepository usersRepository;
     RolesRepository rolesRepository;
+    PasswordEncoder passwordEncoder;
     public Users createUser ( UserCreateRquest userCreateRquest){
         Roles roles = new Roles();
         roles = rolesRepository.findByRoleName(userCreateRquest.getRole());
 
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         Users users = new Users() ;
         users.setUserName(userCreateRquest.getUserName());
         users.setUserPassword(passwordEncoder.encode(userCreateRquest.getUserPassword()));
         users.setRoles(Arrays.asList(roles));
 
        return  usersRepository.save(users);
+    }
+
+    public List<Users> getUser(){
+        return usersRepository.findAll();
     }
 
 }

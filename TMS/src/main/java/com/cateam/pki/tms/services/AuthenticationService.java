@@ -7,6 +7,7 @@ import com.cateam.pki.tms.dto.response.IntrospectResponse;
 import com.cateam.pki.tms.entities.Roles;
 import com.cateam.pki.tms.entities.Users;
 import com.cateam.pki.tms.exception.ApiException;
+import com.cateam.pki.tms.repositories.RolesRepository;
 import com.cateam.pki.tms.repositories.UsersRepository;
 import com.cateam.pki.tms.utils.ConstantValue;
 import com.nimbusds.jose.*;
@@ -37,7 +38,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthenticationService {
+    RolesRepository rolesRepository;
     UsersRepository usersRepository;
+    PasswordEncoder passwordEncoder ;
     @NonFinal
     protected  static  final  String SIGNER_KEY = "fP3LnWWxgT5OULI3qasWUhJiZyUc6ZRkdt2TiJ3akA8iuG0F1TVcANOsjDE3JgwT\n";
 
@@ -59,7 +62,6 @@ public class AuthenticationService {
         if(user == null){
            throw new ApiException(ConstantValue.ErrorCode.USER_NOT_EXISTED);
         }else{
-            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
             boolean authenticated = passwordEncoder.matches(request.getPassword(),user.getUserPassword());
             if(!authenticated){
                 throw new ApiException(ConstantValue.ErrorCode.UNAUTHENTICATED);
@@ -75,24 +77,20 @@ public class AuthenticationService {
     }
 
     private String generateToken(Users user) throws JOSEException {
+        String roleName = rolesRepository.selectRoleNameByUserName(user.getUserName());
         JWSHeader header = new JWSHeader(JWSAlgorithm.HS512);
         JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
                 .subject(user.getUserName())
                 .issuer("pki.tms")
                 .issueTime(new Date())
                 .expirationTime(new Date(Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()))
-                .claim("scope","Custom")
+                .claim("scope",roleName)
                 .build();
-
 
         Payload payload = new Payload(jwtClaimsSet.toJSONObject());
         JWSObject jwsObject = new JWSObject(header,payload);
         jwsObject.sign(new MACSigner(SIGNER_KEY.getBytes()));
-
-
         return jwsObject.serialize();
     }
-
-
 
 }
