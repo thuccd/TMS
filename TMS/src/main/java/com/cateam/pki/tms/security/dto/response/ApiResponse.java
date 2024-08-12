@@ -1,4 +1,4 @@
-package com.cateam.pki.tms.dto.response;
+package com.cateam.pki.tms.security.dto.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

@@ -1,4 +1,4 @@
-package com.cateam.pki.tms.configuration;
+package com.cateam.pki.tms.security.configuration;
 
 import lombok.experimental.NonFinal;
 import org.springframework.context.annotation.Bean;

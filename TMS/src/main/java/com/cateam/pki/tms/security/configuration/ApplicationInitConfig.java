@@ -1,17 +1,7 @@
-package com.cateam.pki.tms.configuration;
+package com.cateam.pki.tms.security.configuration;
 
-import com.cateam.pki.tms.entities.Roles;
-import com.cateam.pki.tms.entities.Users;
-import com.cateam.pki.tms.repositories.RolesRepository;
-import com.cateam.pki.tms.repositories.UsersRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Arrays;
 
 @Configuration
 @Slf4j

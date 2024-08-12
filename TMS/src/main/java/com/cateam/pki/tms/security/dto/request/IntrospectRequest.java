@@ -1,4 +1,4 @@
-package com.cateam.pki.tms.dto.request;
+package com.cateam.pki.tms.security.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,7 +8,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AuthenticationRequest {
-    String userName;
-    String password;
+public class IntrospectRequest {
+    String token;
 }

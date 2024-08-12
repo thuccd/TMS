@@ -1,14 +1,13 @@
-package com.cateam.pki.tms.services;
+package com.cateam.pki.tms.security.services;
 
-import com.cateam.pki.tms.dto.request.AuthenticationRequest;
-import com.cateam.pki.tms.dto.request.IntrospectRequest;
-import com.cateam.pki.tms.dto.response.AuthenticationResponse;
-import com.cateam.pki.tms.dto.response.IntrospectResponse;
-import com.cateam.pki.tms.entities.Roles;
-import com.cateam.pki.tms.entities.Users;
+import com.cateam.pki.tms.security.dto.request.AuthenticationRequest;
+import com.cateam.pki.tms.security.dto.request.IntrospectRequest;
+import com.cateam.pki.tms.security.dto.response.AuthenticationResponse;
+import com.cateam.pki.tms.security.dto.response.IntrospectResponse;
+import com.cateam.pki.tms.security.entities.Users;
 import com.cateam.pki.tms.exception.ApiException;
-import com.cateam.pki.tms.repositories.RolesRepository;
-import com.cateam.pki.tms.repositories.UsersRepository;
+import com.cateam.pki.tms.security.repositories.RolesRepository;
+import com.cateam.pki.tms.security.repositories.UsersRepository;
 import com.cateam.pki.tms.utils.ConstantValue;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
@@ -16,23 +15,16 @@ import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
 import java.util.Date;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

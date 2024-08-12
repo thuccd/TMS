@@ -1,6 +1,6 @@
-package com.cateam.pki.tms.repositories;
+package com.cateam.pki.tms.security.repositories;
 
-import com.cateam.pki.tms.entities.Roles;
+import com.cateam.pki.tms.security.entities.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,22 +1,17 @@
-package com.cateam.pki.tms.services;
+package com.cateam.pki.tms.security.services;
 
-import com.cateam.pki.tms.dto.request.UserCreateRquest;
-import com.cateam.pki.tms.entities.Roles;
-import com.cateam.pki.tms.entities.Users;
-import com.cateam.pki.tms.repositories.RolesRepository;
-import com.cateam.pki.tms.repositories.UsersRepository;
+import com.cateam.pki.tms.security.dto.request.UserCreateRquest;
+import com.cateam.pki.tms.security.entities.Roles;
+import com.cateam.pki.tms.security.entities.Users;
+import com.cateam.pki.tms.security.repositories.RolesRepository;
+import com.cateam.pki.tms.security.repositories.UsersRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 /**

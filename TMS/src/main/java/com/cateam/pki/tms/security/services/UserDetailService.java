@@ -1,8 +1,8 @@
-package com.cateam.pki.tms.services;
+package com.cateam.pki.tms.security.services;
 
-import com.cateam.pki.tms.entities.Roles;
-import com.cateam.pki.tms.entities.Users;
-import com.cateam.pki.tms.repositories.UsersRepository;
+import com.cateam.pki.tms.security.entities.Roles;
+import com.cateam.pki.tms.security.entities.Users;
+import com.cateam.pki.tms.security.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Collection;
 import java.util.stream.Collectors;

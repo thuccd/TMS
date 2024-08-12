@@ -1,11 +1,11 @@
-package com.cateam.pki.tms.controllers;
+package com.cateam.pki.tms.security.controller;
 
-import com.cateam.pki.tms.dto.request.AuthenticationRequest;
-import com.cateam.pki.tms.dto.request.IntrospectRequest;
-import com.cateam.pki.tms.dto.response.ApiResponse;
-import com.cateam.pki.tms.dto.response.AuthenticationResponse;
-import com.cateam.pki.tms.dto.response.IntrospectResponse;
-import com.cateam.pki.tms.services.AuthenticationService;
+import com.cateam.pki.tms.security.dto.request.AuthenticationRequest;
+import com.cateam.pki.tms.security.dto.request.IntrospectRequest;
+import com.cateam.pki.tms.security.dto.response.ApiResponse;
+import com.cateam.pki.tms.security.dto.response.AuthenticationResponse;
+import com.cateam.pki.tms.security.dto.response.IntrospectResponse;
+import com.cateam.pki.tms.security.services.AuthenticationService;
 import com.nimbusds.jose.JOSEException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

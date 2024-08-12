@@ -1,6 +1,6 @@
 package com.cateam.pki.tms.exception;
 
-import com.cateam.pki.tms.dto.response.ApiResponse;
+import com.cateam.pki.tms.security.dto.response.ApiResponse;
 import com.cateam.pki.tms.utils.ConstantValue;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.http.ResponseEntity;

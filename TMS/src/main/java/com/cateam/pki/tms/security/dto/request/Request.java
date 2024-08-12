@@ -1,6 +1,5 @@
-package com.cateam.pki.tms.dto.request;
+package com.cateam.pki.tms.security.dto.request;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCreateRquest {
+public class Request {
     String userName;
-    String userPassword;
-    String role;
 }

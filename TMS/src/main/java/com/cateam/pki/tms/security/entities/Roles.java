@@ -1,4 +1,4 @@
-package com.cateam.pki.tms.entities;
+package com.cateam.pki.tms.security.entities;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

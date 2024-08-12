@@ -1,4 +1,4 @@
-package com.cateam.pki.tms.dto.response;
+package com.cateam.pki.tms.security.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
