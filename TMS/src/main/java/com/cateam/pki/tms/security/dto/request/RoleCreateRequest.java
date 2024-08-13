@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Request {
-    String userName;
+public class RoleCreateRequest {
+    String roleName;
 }

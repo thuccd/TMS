@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author ThucCD
@@ -26,4 +27,6 @@ public class Roles implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      Integer roleId;
      String roleName;
+     @OneToMany(mappedBy = "roles")
+    List<UsersRoles> usersRoles;
 }

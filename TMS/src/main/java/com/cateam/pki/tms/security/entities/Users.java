@@ -28,11 +28,13 @@ public class Users implements Serializable {
      String userPassword;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id",
-                    referencedColumnName = "userId"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId"))
-    private Collection<Roles> roles;
+
+
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "users_roles",
+//            joinColumns = @JoinColumn(name = "user_id",
+//                    referencedColumnName = "userId"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId"))
+//    private Collection<Roles> roles;
 
 }
