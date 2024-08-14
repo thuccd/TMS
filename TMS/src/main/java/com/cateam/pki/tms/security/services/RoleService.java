@@ -22,14 +22,13 @@ public class RoleService {
     RolesRepository rolesRepository;
     @PreAuthorize("hasRole('Admin')")
     public Roles createRole (RoleCreateRequest roleCreateRequest){
-        System.out.println(2);
-        Roles roles= new Roles();
-        roles = rolesRepository.findByRoleName(roleCreateRequest.getRoleName());
+        Roles roles = rolesRepository.findByRoleName(roleCreateRequest.getRoleName());
         if(roles!=null){
             log.info("Role existed");
             throw  new ApiException(ConstantValue.ErrorCode.ROLE_EXISTED);
         }
-        roles.setRoleName(roleCreateRequest.getRoleName());
-        return rolesRepository.save(roles);
+        Roles rolesNew = new Roles();
+        rolesNew.setRoleName(roleCreateRequest.getRoleName());
+        return rolesRepository.save(rolesNew);
     }
 }

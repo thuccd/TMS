@@ -13,13 +13,13 @@ import java.util.Map;
 @ControllerAdvice /**/
 public class GlobalExcetionHandler {
     private static final String MIN_ATTRIBUTE = "min";
-    @ExceptionHandler(value = Exception.class)
+/*    @ExceptionHandler(value = Exception.class)
     ResponseEntity<ApiResponse> handlingRuntimeException(RuntimeException exception) {
         ApiResponse apiResponse = new ApiResponse();
         apiResponse.setCode(ConstantValue.ErrorCode.UNCATEGORIZED_EXCEPTION.getCode());
         apiResponse.setMessage(ConstantValue.ErrorCode.UNCATEGORIZED_EXCEPTION.getMessage());
         return ResponseEntity.badRequest().body(apiResponse);
-    }
+    }*/
     @ExceptionHandler(value = ApiException.class)
     ResponseEntity<ApiResponse> handlingApiException(ApiException exception) {
         ConstantValue.ErrorCode errorCode = exception.getCode();

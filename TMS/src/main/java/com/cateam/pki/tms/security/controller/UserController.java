@@ -33,7 +33,6 @@ public class UserController {
 
     @PostMapping("/create_role")
     ApiResponse<Roles> createRole (@RequestBody RoleCreateRequest request){
-        System.out.println(1);
         ApiResponse<Roles> apiResponse = new ApiResponse<>();
         apiResponse.setResult(roleService.createRole(request));
         return  apiResponse;
