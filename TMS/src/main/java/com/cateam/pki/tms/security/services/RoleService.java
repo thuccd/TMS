@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class RoleService {
 
     RolesRepository rolesRepository;
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('ADMIN')")
     public Roles createRole (RoleCreateRequest roleCreateRequest){
         Roles roles = rolesRepository.findByRoleName(roleCreateRequest.getRoleName());
         if(roles!=null){

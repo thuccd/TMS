@@ -34,7 +34,7 @@ public class UserService {
     PasswordEncoder passwordEncoder;
     UsersRolesRepository usersRolesRepository;
 
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('ADMIN')")
     public UserResponse createUser ( UserCreateRquest userCreateRquest){
         Roles roles = new Roles();
         roles = rolesRepository.findByRoleName(userCreateRquest.getRole());
@@ -42,24 +42,24 @@ public class UserService {
             log.info("Role is not found");
             throw  new ApiException(ConstantValue.ErrorCode.ROLE_NOT_FOUND);
         }
-        Users users = new Users() ;
-        users= usersRepository.findByUserName(userCreateRquest.getUserName());
+        Users users = usersRepository.findByUserName(userCreateRquest.getUserName());
         if(users!=null){
             log.info("User existed");
             throw  new ApiException(ConstantValue.ErrorCode.USER_EXISTED);
         }
-        users.setUserName(userCreateRquest.getUserName());
-        users.setUserPassword(passwordEncoder.encode(userCreateRquest.getUserPassword()));
-        usersRepository.save(users);
+        Users usersN = new Users();
+        usersN.setUserName(userCreateRquest.getUserName());
+        usersN.setUserPassword(passwordEncoder.encode(userCreateRquest.getUserPassword()));
+        usersRepository.save(usersN);
 
         UsersRoles usersRoles = new UsersRoles();
-        usersRoles.setUsers(users);
+        usersRoles.setUsers(usersN);
         usersRoles.setRoles(roles);
         usersRolesRepository.save(usersRoles);
 
         UserResponse userResponse = new UserResponse();
         userResponse.setRole(roles.getRoleName());
-        userResponse.setUserName(users.getUserName());
+        userResponse.setUserName(usersN.getUserName());
        return  userResponse;
     }
 
