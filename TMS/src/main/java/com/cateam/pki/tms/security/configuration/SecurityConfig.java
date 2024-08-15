@@ -25,7 +25,7 @@ import javax.crypto.spec.SecretKeySpec;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-    private final  String[] PUBLIC_ENPOINTS = {"auth/log-in","auth/introspect"};
+    private final  String[] PUBLIC_ENPOINTS = {"auth/log-in","auth/introspect","auth/refresh"};
     @NonFinal
     protected  static  final  String SIGNER_KEY = "fP3LnWWxgT5OULI3qasWUhJiZyUc6ZRkdt2TiJ3akA8iuG0F1TVcANOsjDE3JgwT\n";
 

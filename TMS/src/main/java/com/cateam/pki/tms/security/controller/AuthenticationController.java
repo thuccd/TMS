@@ -2,6 +2,7 @@ package com.cateam.pki.tms.security.controller;
 
 import com.cateam.pki.tms.security.dto.request.AuthenticationRequest;
 import com.cateam.pki.tms.security.dto.request.IntrospectRequest;
+import com.cateam.pki.tms.security.dto.request.RefreshRequest;
 import com.cateam.pki.tms.security.dto.response.ApiResponse;
 import com.cateam.pki.tms.security.dto.response.AuthenticationResponse;
 import com.cateam.pki.tms.security.dto.response.IntrospectResponse;
@@ -37,6 +38,15 @@ public class AuthenticationController {
 
         var result = authenticationService.introspect(request);
         return ApiResponse.<IntrospectResponse>builder()
+                .result(result)
+                .build();
+    }
+
+    @PostMapping("/refresh")
+    ApiResponse<AuthenticationResponse> refresh (@RequestBody RefreshRequest request) throws ParseException, JOSEException {
+
+        var result = authenticationService.refreshToken(request);
+        return ApiResponse.<AuthenticationResponse>builder()
                 .result(result)
                 .build();
     }
